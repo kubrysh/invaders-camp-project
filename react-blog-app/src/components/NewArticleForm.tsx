@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./NewArticleForm.css";
 import { newArticleSchema } from "./NewArticleValidation"
 
-const NewArticleForm = () => {
+const NewArticleForm = (props:any) => {
 
     const [formState, setFormState] = useState({userName: "", userEmail: "", articleTitle: "", articleText: ""});
     const [errors, setErrors] = useState([]);
@@ -42,60 +42,64 @@ const NewArticleForm = () => {
     }
 
     return (
-        <>
-            <hr className="horiz-line" />
-            <h3>Add a New Article</h3>
-            <form className="form-container" onSubmit={handleSubmit} noValidate>
-                <label className="label-container">
-                    Name:
-                    <input
-                        name="userName"
-                        type="text"
-                        value={formState.userName}
-                        onChange={handleChange}
-                        placeholder="Your Name..."
-                        maxLength={50}
-                    />
-                </label>
-                <label className="label-container">
-                    E-Mail:
-                    <input
-                        name="userEmail"
-                        type="email"
-                        value={formState.userEmail}
-                        onChange={handleChange}
-                        placeholder="Your E-Mail..."
-                        maxLength={100}
-                    />
-                </label>
-                <label className="label-container">
-                    Title:
-                    <input
-                        name="articleTitle"
-                        type="text"
-                        value={formState.articleTitle}
-                        onChange={handleChange}
-                        placeholder="Your Article Title..."
-                        maxLength={100}
-                    />
-                </label>
-                <label className="label-container">
-                    Article Text: ({560 - formState.articleText.length} characters)
-                    <textarea
-                        name="articleText"
-                        className="text-container"
-                        value={formState.articleText}
-                        onChange={handleChange}
-                        placeholder="Your Article Text..."
-                        maxLength={560}
-                    />
-                </label>
-                <div className="errors-container">
-                    {errors && errors.map((error) => <p key={error}>{error}</p>)}
+        <div className="popup-background">
+            <div className="popup-container">
+                <div className="popup-header">
+                    <h3>Add a New Article</h3>
+                    <button className="close-btn" onClick={() => props.setOpenClosed(false)}>❌</button>
                 </div>
-                <input className="submit-btn" type="submit" value="Submit" />
-            </form>
-        </>
+                <form className="form-container" onSubmit={handleSubmit} noValidate>
+                    <label className="label-container">
+                        Name:
+                        <input
+                            name="userName"
+                            type="text"
+                            value={formState.userName}
+                            onChange={handleChange}
+                            placeholder="Your Name..."
+                            maxLength={50}
+                        />
+                    </label>
+                    <label className="label-container">
+                        E-Mail:
+                        <input
+                            name="userEmail"
+                            type="email"
+                            value={formState.userEmail}
+                            onChange={handleChange}
+                            placeholder="Your E-Mail..."
+                            maxLength={100}
+                        />
+                    </label>
+                    <label className="label-container">
+                        Title:
+                        <input
+                            name="articleTitle"
+                            type="text"
+                            value={formState.articleTitle}
+                            onChange={handleChange}
+                            placeholder="Your Article Title..."
+                            maxLength={100}
+                        />
+                    </label>
+                    <label className="label-container">
+                        Article Text: ({560 - formState.articleText.length} characters)
+                        <textarea
+                            name="articleText"
+                            className="text-container"
+                            value={formState.articleText}
+                            onChange={handleChange}
+                            placeholder="Your Article Text..."
+                            maxLength={560}
+                        />
+                    </label>
+                    <div className="errors-container">
+                        {errors && errors.map((error) => <p key={error}>{error}</p>)}
+                    </div>
+                    <input className="submit-btn" type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
     )
 }
 

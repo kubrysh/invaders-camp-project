@@ -7,10 +7,11 @@ import NewArticleForm from "./components/NewArticleForm";
 
 const App = () => {
     
-    const [newArticle, setNewArticle] = useState(false);
+    const [isNewArticleOpen, setIsNewArticleOpen] = useState(false);
 
     return (
         <div className="app">
+            {isNewArticleOpen && <NewArticleForm setOpenClosed={setIsNewArticleOpen} />}
             <header className="header-container">
                 <div className="logo-container">
                     <img src={logo} className="app-logo" alt="logo" />
@@ -23,7 +24,7 @@ const App = () => {
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
                     <a href="#" className="nav-element">Home</a>
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
-                    <a href="#" onClick={() => setNewArticle(true)} className="nav-element">✍️ New Article</a>
+                    <a href="#" onClick={() => setIsNewArticleOpen(true)} className="nav-element">✍️ New Article</a>
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
                     <a href="#" className="nav-element">Username</a>
                 </nav>
@@ -68,7 +69,6 @@ const App = () => {
                             <a href="#" id="read-more-lnk">Read more...</a>
                         </div>
                     </article>
-                    {newArticle && <NewArticleForm />}
                 </section>
                 <aside className="aside-column">
                     <div className="sidebar-container">
