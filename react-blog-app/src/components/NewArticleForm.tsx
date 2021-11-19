@@ -1,101 +1,102 @@
-import React, { useState } from "react";
+import { Formik, Form, Field } from 'formik';
 import "./NewArticleForm.css";
 import { newArticleSchema } from "./NewArticleValidation"
 
-const NewArticleForm = () => {
-
-    const [formState, setFormState] = useState({userName: "", userEmail: "", articleTitle: "", articleText: ""});
-    const [errors, setErrors] = useState([]);
-
-    const handleChange = (event: any) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setFormState(prevState => {
-            return {
-                ...prevState,
-                [name]: value
-            }
-        });
-    }
-
-    const handleSubmit = async (event: any) => {
-        newArticleSchema
-            .validate(formState, {abortEarly: false})
-            .then(() => {
-                setErrors([]);
-                //setTimeout is for re-rendering to occur (clearing of errors on the page)
-                setTimeout(() =>
-                    alert(
-                        "Author's Name: " + formState.userName + "\n" +
-                        "Author's E-Mail: " + formState.userEmail + "\n" +
-                        "Article Title: " + formState.articleTitle + "\n" +
-                        "Article Text: " + formState.articleText
-                    ),
-                    100
-                );
-            })
-            .catch(err => {
-                setErrors(err.errors);
-            });
-        
-        event.preventDefault();
-    }
-
+const NewArticleForm = (props:any) => {
     return (
-        <>
-            <hr className="horiz-line" />
-            <h3>Add a New Article</h3>
-            <form className="form-container" onSubmit={handleSubmit} noValidate>
-                <label className="label-container">
-                    Name:
-                    <input
-                        name="userName"
-                        type="text"
-                        value={formState.userName}
-                        onChange={handleChange}
-                        placeholder="Your Name..."
-                        maxLength={50}
-                    />
-                </label>
-                <label className="label-container">
-                    E-Mail:
-                    <input
-                        name="userEmail"
-                        type="email"
-                        value={formState.userEmail}
-                        onChange={handleChange}
-                        placeholder="Your E-Mail..."
-                        maxLength={100}
-                    />
-                </label>
-                <label className="label-container">
-                    Title:
-                    <input
-                        name="articleTitle"
-                        type="text"
-                        value={formState.articleTitle}
-                        onChange={handleChange}
-                        placeholder="Your Article Title..."
-                        maxLength={100}
-                    />
-                </label>
-                <label className="label-container">
-                    Article Text: ({560 - formState.articleText.length} characters)
-                    <textarea
-                        name="articleText"
-                        className="text-container"
-                        value={formState.articleText}
-                        onChange={handleChange}
-                        placeholder="Your Article Text..."
-                        maxLength={560}
-                    />
-                </label>
-                <div className="errors-container">
-                    {errors && errors.map((error) => <p key={error}>{error}</p>)}
+        <div className="popup-background">
+            <div className="popup-container">
+                <div className="popup-header">
+                    <h3>Add a New Article</h3>
+                    <button className="close-btn" onClick={() => props.setOpenClosed(false)}>❌</button>
                 </div>
-                <input className="submit-btn" type="submit" value="Submit" />
-            </form>
-        </>
+                <Formik
+                    initialValues={{
+                        userName: "",
+                        userEmail: "",
+                        articleTitle: "",
+                        articleText: "",
+                    }}
+                    validationSchema={newArticleSchema}
+                    onSubmit = {(values:any, FormikBag) => {
+                        let submitValues = values;
+                        let regexp = /^\s+|\s+$/g;
+
+                        Object.keys(submitValues).forEach(key => {
+                            submitValues[key] = submitValues[key].replace(regexp, "")
+                        });
+                        
+                        //changing email field value to prevent browser from displaying whitespaces
+                        FormikBag.setFieldValue('userEmail', '', false)
+
+                        FormikBag.setValues(submitValues);
+
+                        alert(
+                            "Author's Name: " + values.userName + "\n" +
+                            "Author's E-Mail: " + values.userEmail + "\n" +
+                            "Article Title: " + values.articleTitle + "\n" +
+                            "Article Text: " + values.articleText
+                        );
+                    }}
+                >
+                    {({ errors, touched, values }) => (
+                        <Form className="form-container" noValidate>
+                            <label className="label-container">
+                                Name:
+                                <Field
+                                    name="userName"
+                                    className={`${errors.userName && touched.userName && "is-warning"}`}
+                                    placeholder="Your Name..."
+                                    maxLength={50}
+                                />
+                                {errors.userName && touched.userName ? (
+                                    <div className="error-message" >{errors.userName}</div>
+                                ) : null}
+                            </label>
+                            <label className="label-container">
+                                E-Mail:
+                                <Field
+                                    name="userEmail"
+                                    className={`${errors.userEmail && touched.userEmail && "is-warning"}`}
+                                    type="email"
+                                    placeholder="Your E-Mail..."
+                                    maxLength={100}
+                                />
+                                {errors.userEmail && touched.userEmail ? (
+                                    <div className="error-message" >{errors.userEmail}</div>
+                                ) : null}
+                            </label>
+                            <label className="label-container">
+                                Title:
+                                <Field
+                                    name="articleTitle"
+                                    className={`${errors.articleTitle && touched.articleTitle && "is-warning"}`}
+                                    placeholder="Your Article Title..."
+                                    maxLength={100}
+                                />
+                                {errors.articleTitle && touched.articleTitle ? (
+                                    <div className="error-message" >{errors.articleTitle}</div>
+                                ) : null}
+                            </label>
+                            <label className="label-container">
+                                Article Text: ({560 - values.articleText.length} characters)
+                                <Field
+                                    name="articleText"
+                                    as="textarea"
+                                    className={`text-container ${errors.articleText && touched.articleText && "is-warning"}`}
+                                    placeholder="Your Article Text..."
+                                    maxLength={560}
+                                />
+                                {errors.articleText && touched.articleText ? (
+                                    <div className="error-message" >{errors.articleText}</div>
+                                ) : null}
+                            </label>
+                            <button className="submit-btn" type="submit">Submit</button>
+                        </Form>
+                    )}
+                </Formik>
+            </div>
+        </div>
     )
 }
 
