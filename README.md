@@ -13,11 +13,10 @@
 #### Comments:
 
 * Created a basic blog layout as specified by the image
-* Created a form for publishing a new article
-  * (**!!! To access the form, click on the `✍️ New Article` in the navigation section**)
-* Implemented basic validation with the [yup library](https://www.npmjs.com/package/yup)
-* No component division and routing were implemented yet
-  * (Since these are the tasks of the following homework assignments)
+* Created a form for publishing a new article (**!!! To access the form, click on the `✍️ New Article` in the navigation section**)
+* At first, I implemented basic validation with the raw [yup library](https://www.npmjs.com/package/yup), but error handling was not good enough out of the box.
+* So, I switched to `Formik` library (which also uses `yup` for validation, but allows to get error messages for each field) and reworked the whole form component.
+* No component division and routing were implemented yet (since these are the tasks of the following homework assignments)
 
 ---
 
