@@ -18,12 +18,19 @@ const NewArticleForm = (props:any) => {
                         articleText: "",
                     }}
                     validationSchema={newArticleSchema}
-                    onSubmit = {values => {
+                    onSubmit = {(values:any) => {
+                        let submitValues = values;
+                        let regexp = /^\s+|\s+$/g;
+
+                        Object.keys(submitValues).forEach(key => {
+                            submitValues[key] = submitValues[key].replace(regexp, "")
+                        })
+
                         alert(
-                            "Author's Name: " + values.userName + "\n" +
-                            "Author's E-Mail: " + values.userEmail + "\n" +
-                            "Article Title: " + values.articleTitle + "\n" +
-                            "Article Text: " + values.articleText
+                            "Author's Name: " + submitValues.userName + "\n" +
+                            "Author's E-Mail: " + submitValues.userEmail + "\n" +
+                            "Article Title: " + submitValues.articleTitle + "\n" +
+                            "Article Text: " + submitValues.articleText
                         )
                     }}
                 >
