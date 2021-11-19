@@ -6,7 +6,7 @@ export const newArticleSchema = yup.object().shape({
         .max(50, 'Name is too long!')
         .required('Name is required!'),
     userEmail: yup.string()
-        .email('Invalid email')
+        .email('Invalid email!')
         .required('Email is required!'),
     articleTitle: yup.string()
         .min(2, 'Title is too short!')
