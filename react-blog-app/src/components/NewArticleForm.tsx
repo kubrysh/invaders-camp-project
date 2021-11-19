@@ -18,24 +18,29 @@ const NewArticleForm = (props:any) => {
                         articleText: "",
                     }}
                     validationSchema={newArticleSchema}
-                    onSubmit = {(values:any) => {
+                    onSubmit = {(values:any, FormikBag) => {
                         let submitValues = values;
                         let regexp = /^\s+|\s+$/g;
 
                         Object.keys(submitValues).forEach(key => {
                             submitValues[key] = submitValues[key].replace(regexp, "")
-                        })
+                        });
+                        
+                        //changing email field value to prevent browser from displaying whitespaces
+                        FormikBag.setFieldValue('userEmail', '', false)
+
+                        FormikBag.setValues(submitValues);
 
                         alert(
-                            "Author's Name: " + submitValues.userName + "\n" +
-                            "Author's E-Mail: " + submitValues.userEmail + "\n" +
-                            "Article Title: " + submitValues.articleTitle + "\n" +
-                            "Article Text: " + submitValues.articleText
-                        )
+                            "Author's Name: " + values.userName + "\n" +
+                            "Author's E-Mail: " + values.userEmail + "\n" +
+                            "Article Title: " + values.articleTitle + "\n" +
+                            "Article Text: " + values.articleText
+                        );
                     }}
                 >
                     {({ errors, touched, values }) => (
-                        <Form className="form-container">
+                        <Form className="form-container" noValidate>
                             <label className="label-container">
                                 Name:
                                 <Field
