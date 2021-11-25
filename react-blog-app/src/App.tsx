@@ -4,14 +4,28 @@ import "./App.css";
 
 import "./components/NewArticleForm";
 import NewArticleForm from "./components/NewArticleForm";
+import FormSuccess from "./components/FormSuccess";
 
 const App = () => {
     
     const [isNewArticleOpen, setIsNewArticleOpen] = useState(false);
+    const [isNewArticleSubmitted, setIsNewArticleSubmitted] = useState(false);
 
     return (
         <div className="app">
-            {isNewArticleOpen && <NewArticleForm setOpenClosed={setIsNewArticleOpen} />}
+            {
+                isNewArticleOpen && !isNewArticleSubmitted &&
+                <NewArticleForm
+                    setOpenClosed={setIsNewArticleOpen}
+                    setIsSubmitted={setIsNewArticleSubmitted}
+                />
+            }
+            {
+                isNewArticleSubmitted && !isNewArticleOpen &&
+                <FormSuccess
+                    setOpenClosed={setIsNewArticleSubmitted}
+                />
+            }
             <header className="header-container">
                 <div className="logo-container">
                     <img src={logo} className="app-logo" alt="logo" />

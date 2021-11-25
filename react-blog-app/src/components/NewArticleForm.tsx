@@ -6,10 +6,10 @@ const NewArticleForm = (props:any) => {
     return (
         <div className="popup-background">
             <div className="popup-container">
-                <div className="popup-header">
+                <header className="popup-header">
                     <h3>Add a New Article</h3>
                     <button className="close-btn" onClick={() => props.setOpenClosed(false)}>❌</button>
-                </div>
+                </header>
                 <Formik
                     initialValues={{
                         userName: "",
@@ -18,25 +18,22 @@ const NewArticleForm = (props:any) => {
                         articleText: "",
                     }}
                     validationSchema={newArticleSchema}
-                    onSubmit = {(values:any, FormikBag) => {
-                        let submitValues = values;
+                    onSubmit = {(values:any) => {
                         let regexp = /^\s+|\s+$/g;
 
-                        Object.keys(submitValues).forEach(key => {
-                            submitValues[key] = submitValues[key].replace(regexp, "")
-                        });
-                        
-                        //changing email field value to prevent browser from displaying whitespaces
-                        FormikBag.setFieldValue('userEmail', '', false)
+                        const submitValues:any = Object.keys(values).reduce((result, key) => (
+                            { ...result, [key]: values[key].replace(regexp, "") }
+                        ), {});
 
-                        FormikBag.setValues(submitValues);
+                        props.setOpenClosed(false);
+                        props.setIsSubmitted(true);
 
-                        alert(
-                            "Author's Name: " + values.userName + "\n" +
-                            "Author's E-Mail: " + values.userEmail + "\n" +
-                            "Article Title: " + values.articleTitle + "\n" +
-                            "Article Text: " + values.articleText
-                        );
+                        setTimeout(() => alert(
+                            "Author's Name: " + submitValues.userName + "\n" +
+                            "Author's E-Mail: " + submitValues.userEmail + "\n" +
+                            "Article Title: " + submitValues.articleTitle + "\n" +
+                            "Article Text: " + submitValues.articleText
+                        ), 1000)
                     }}
                 >
                     {({ errors, touched, values }) => (

@@ -23,6 +23,10 @@
     align-items: center;
 }
 
+.popup-header.is-success {
+    color: #308342;
+}
+
 .close-btn {
     border: none;
     background-color: transparent;
