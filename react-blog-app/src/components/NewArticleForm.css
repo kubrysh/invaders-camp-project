@@ -41,16 +41,16 @@
     font-size: 16px;
 }
 
-.is-warning {
-    border:1px solid #f02849 !important;
-}
-
-.form-container input, .text-container  {
+input, .text-container  {
     padding: 8px;
     margin-top: 4px;
-    border:1px solid rgba(0,0,0,0.7);
+    border: 1px solid rgba(0,0,0,0.7);
     border-radius: 6px;
     font-size: 14px;
+}
+
+input.is-warning, .text-container.is-warning {
+    border: 1px solid #f02849;
 }
 
 .text-container {

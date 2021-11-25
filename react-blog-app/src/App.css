@@ -100,8 +100,6 @@
 }
 
 .author-date-container {
-    display: flex;
-    flex-direction: column;
     margin-left: 10px;
 }
 
@@ -114,7 +112,6 @@
 }
 
 .post-likes {
-    display: flex;
     margin: 0 0 0 auto;
 }
 

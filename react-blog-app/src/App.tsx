@@ -78,7 +78,7 @@ const App = () => {
                 </aside>
             </main>
             <footer className="footer">
-                <p>Made by <b>Ihor Kubrysh</b> for Intellias' JS Invaders Camp | 2021</p>
+                <p>Made by <strong>Ihor Kubrysh</strong> for Intellias' JS Invaders Camp | 2021</p>
             </footer>
         </div>
     );
