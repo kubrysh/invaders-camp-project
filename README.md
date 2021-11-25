@@ -9,7 +9,7 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
 - 🔌 [Usage](#usage)
 - 🌍 [Depolyment](#deployment)
 - 📚 [Homework](#homework)
-  - [#2 (Nov 12, 2021 – D/L: Nov 20, 2021)](#-homework-1-nov-8-2021--dl-nov-10-2021)
+  - [#2 (Nov 12, 2021 – D/L: Nov 20, 2021)](#-homework-2-nov-12-2021--dl-nov-20-2021)
   - [#1 (Nov 8, 2021 – D/L: Nov 10, 2021)](#-homework-1-nov-8-2021--dl-nov-10-2021)
 
 ## Usage
