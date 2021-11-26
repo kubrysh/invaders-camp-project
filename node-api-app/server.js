@@ -20,6 +20,17 @@ app.get("*", (req, res) => {
     res.status(404).send("Not Found");
 });
 
+// Error Loger
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    next(err);
+});
+
+// Error Handler
+app.use((err, req, res, next) => {
+    res.status(500).send(`Error occured: ${err.message}`);
+});
+
 app.listen(port, () => {
     console.log(`Node API app listening at localhost:${port}`)
 });
