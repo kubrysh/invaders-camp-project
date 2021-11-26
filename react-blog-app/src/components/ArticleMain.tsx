@@ -7,7 +7,7 @@ const ArticleMain = (props: any) => {
                 <img src={props.authorPhoto} alt={`${props.authorName}'s avatar`} className="author-avatar" />
                 <div className="author-date-container">
                     <h3 id="author-name">{props.authorName}</h3>
-                    <span className="post-date">November 2, 2021</span>
+                    <span className="post-date">{props.postDate}</span>
                 </div>
                 <div className="post-likes">
                     <button>❤️ {props.likes}</button>
