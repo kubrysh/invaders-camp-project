@@ -12,10 +12,10 @@ const NewArticleForm = (props:any) => {
                 </header>
                 <Formik
                     initialValues={{
-                        userName: "",
-                        userEmail: "",
-                        articleTitle: "",
-                        articleText: "",
+                        authorName: "",
+                        authorEmail: "",
+                        postTitle: "",
+                        postText: ""
                     }}
                     validationSchema={newArticleSchema}
                     onSubmit = {(values:any) => {
@@ -41,51 +41,51 @@ const NewArticleForm = (props:any) => {
                             <label className="label-container">
                                 Name:
                                 <Field
-                                    name="userName"
-                                    className={`${errors.userName && touched.userName && "is-warning"}`}
+                                    name="authorName"
+                                    className={`${errors.authorName && touched.authorName && "is-warning"}`}
                                     placeholder="Your Name..."
                                     maxLength={50}
                                 />
-                                {errors.userName && touched.userName ? (
-                                    <div className="error-message" >{errors.userName}</div>
+                                {errors.authorName && touched.authorName ? (
+                                    <div className="error-message" >{errors.authorName}</div>
                                 ) : null}
                             </label>
                             <label className="label-container">
                                 E-Mail:
                                 <Field
-                                    name="userEmail"
-                                    className={`${errors.userEmail && touched.userEmail && "is-warning"}`}
+                                    name="authorEmail"
+                                    className={`${errors.authorEmail && touched.authorEmail && "is-warning"}`}
                                     type="email"
                                     placeholder="Your E-Mail..."
                                     maxLength={100}
                                 />
-                                {errors.userEmail && touched.userEmail ? (
-                                    <div className="error-message" >{errors.userEmail}</div>
+                                {errors.authorEmail && touched.authorEmail ? (
+                                    <div className="error-message" >{errors.authorEmail}</div>
                                 ) : null}
                             </label>
                             <label className="label-container">
                                 Title:
                                 <Field
-                                    name="articleTitle"
-                                    className={`${errors.articleTitle && touched.articleTitle && "is-warning"}`}
+                                    name="postTitle"
+                                    className={`${errors.postTitle && touched.postTitle && "is-warning"}`}
                                     placeholder="Your Article Title..."
                                     maxLength={100}
                                 />
-                                {errors.articleTitle && touched.articleTitle ? (
-                                    <div className="error-message" >{errors.articleTitle}</div>
+                                {errors.postTitle && touched.postTitle ? (
+                                    <div className="error-message" >{errors.postTitle}</div>
                                 ) : null}
                             </label>
                             <label className="label-container">
-                                Article Text: ({560 - values.articleText.length} characters)
+                                Article Text: ({560 - values.postText.length} characters)
                                 <Field
-                                    name="articleText"
+                                    name="postText"
                                     as="textarea"
-                                    className={`text-container ${errors.articleText && touched.articleText && "is-warning"}`}
+                                    className={`text-container ${errors.postText && touched.postText && "is-warning"}`}
                                     placeholder="Your Article Text..."
                                     maxLength={560}
                                 />
-                                {errors.articleText && touched.articleText ? (
-                                    <div className="error-message" >{errors.articleText}</div>
+                                {errors.postText && touched.postText ? (
+                                    <div className="error-message" >{errors.postText}</div>
                                 ) : null}
                             </label>
                             <button className="submit-btn" type="submit">Submit</button>

@@ -15,7 +15,7 @@ const ArticleMain = (props: any) => {
             </div>
             <div>
                 <h2>{props.postTitle}</h2>
-                <p className="post-text">{props.postTextShort}</p>
+                <p className="post-text">{props.postText}</p>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
                 <a href="#" id="read-more-lnk">Read more...</a>
             </div>
