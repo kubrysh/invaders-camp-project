@@ -10,5 +10,5 @@ app.use(cors({
 }));
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+    console.log(`Node API app listening at localhost:${port}`)
+});

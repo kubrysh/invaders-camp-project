@@ -1,6 +1,6 @@
 {
-  "name": "api-app",
-  "version": "1.0.0",
+  "name": "node-api-app",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
