@@ -7,7 +7,7 @@ import FormSuccess from "./components/FormSuccess";
 import ArticleMain from "./components/ArticleMain";
 
 const App = () => {
-    
+
     const [isNewArticleOpen, setIsNewArticleOpen] = useState(false);
     const [isNewArticleSubmitted, setIsNewArticleSubmitted] = useState(false);
 
@@ -17,18 +17,18 @@ const App = () => {
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}/api/posts`)
-          .then(res => res.json())
-          .then(
-            (result) => {
-              setIsLoaded(true);
-              setPosts(result.posts);
-            },
-            (error) => {
-              setIsLoaded(true);
-              setError(error);
-            }
-          )
-    }, []);
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setPosts(result.posts);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+    }, [isNewArticleSubmitted]);
 
     const DisplayArticles = () => {
         if (error) {
@@ -38,8 +38,11 @@ const App = () => {
         } else {
             return (
                 <>
-                    <ArticleMain {...posts[0]} />
-                    <ArticleMain {...posts[1]} />
+                    {
+                        posts.map((post:any) => {
+                            return <ArticleMain { ...post } key={post.postId} />
+                        })
+                    }
                 </>
             )
         }

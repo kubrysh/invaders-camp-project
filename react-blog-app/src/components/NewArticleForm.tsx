@@ -25,15 +25,23 @@ const NewArticleForm = (props:any) => {
                             { ...result, [key]: values[key].replace(regexp, "") }
                         ), {});
 
-                        props.setOpenClosed(false);
-                        props.setIsSubmitted(true);
-
-                        setTimeout(() => alert(
-                            "Author's Name: " + submitValues.userName + "\n" +
-                            "Author's E-Mail: " + submitValues.userEmail + "\n" +
-                            "Article Title: " + submitValues.articleTitle + "\n" +
-                            "Article Text: " + submitValues.articleText
-                        ), 1000)
+                        fetch(`${process.env.REACT_APP_API_URL}/api/posts`, {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(submitValues)
+                        })
+                            .then(
+                                (res) => {
+                                    props.setOpenClosed(false);
+                                    props.setIsSubmitted(true);
+                                },
+                                (error) => {
+                                    props.setOpenClosed(false);
+                                    props.setIsSubmitted(false);
+                                    console.log(error);
+                                }
+                            )
+                            
                     }}
                 >
                     {({ errors, touched, values }) => (
