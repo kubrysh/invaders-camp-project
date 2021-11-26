@@ -9,22 +9,67 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
 - 🔌 [Usage](#usage)
 - 🌍 [Depolyment](#deployment)
 - 📚 [Homework](#homework)
+  - [#4 (Nov 24, 2021 – D/L: Nov 26, 2021)](#-homework-4-nov-24-2021--dl-nov-26-2021)
+  - [#3 (Nov 15, 2021 – D/L: End of The Course)](#-homework-3-nov-15-2021--dl-end-of-the-course)
   - [#2 (Nov 12, 2021 – D/L: Nov 20, 2021)](#-homework-2-nov-12-2021--dl-nov-20-2021)
   - [#1 (Nov 8, 2021 – D/L: Nov 10, 2021)](#-homework-1-nov-8-2021--dl-nov-10-2021)
 
 ## Usage
 
-To launch the Development Server of **React App**:
+1. To launch the Development Server of **React App**:
 
 `cd react-blog-app`
 
 `npm start`
 
+2. To launch the **Node App**:
+
+`cd node-api-app`
+
+`npm start`
+
 ## Deployment
 
-**React App** is deployed on Heroku using [create-react-app-buildpack](https://github.com/mars/create-react-app-buildpack) and served via [Nginx](https://nginx.org/en/).
+**React App** is deployed on [Heroku](https://kubrysh-react-blog-app.herokuapp.com) using [create-react-app-buildpack](https://github.com/mars/create-react-app-buildpack) and served via [Nginx](https://nginx.org/en/).
+
+**Node App** is also deployed on [Heroku](https://kubrysh-node-api-app.herokuapp.com).
 
 ## Homework
+
+### ✅ Homework #4 (Nov 24, 2021 – D/L: Nov 26, 2021)
+
+#### Task:
+
+> * Setup basic back end application
+> * Serve SPA by Express JS
+
+#### Comments:
+
+* Setted up & configured Node + Express server for handling API & Business Logic
+* Configured routing & error handling on Express
+* Created 2 API Endpoints (GET & POST) for getting existing articles and adding new ones
+* Implemented articles fetching from API
+* Implemented adding new articles via sending POST requests using form data to API
+* Implementeed article data storage in a file
+* Deployed React App served by Nginx on Heroku
+* Deployed Node App on Heroku
+* TBD: rework data fetching with axios
+
+---
+
+### 🔘 Homework #3 (Nov 15, 2021 – D/L: End of The Course)
+
+#### Task:
+
+> * Use MaterialUI components
+> * Add styles
+> * Focus on: moving from the default browser components and styles to the MaterialUI, make your project clean and good looking
+
+#### Comments:
+
+* TBD
+
+---
 
 ### ✅ Homework #2 (Nov 12, 2021 – D/L: Nov 20, 2021)
 

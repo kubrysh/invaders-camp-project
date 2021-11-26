@@ -1,15 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-import "./components/NewArticleForm";
 import NewArticleForm from "./components/NewArticleForm";
 import FormSuccess from "./components/FormSuccess";
+import ArticleMain from "./components/ArticleMain";
 
 const App = () => {
-    
+
     const [isNewArticleOpen, setIsNewArticleOpen] = useState(false);
     const [isNewArticleSubmitted, setIsNewArticleSubmitted] = useState(false);
+
+    const [error, setError] = useState<any>(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}/api/posts`)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setPosts(result.posts);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+    }, [isNewArticleSubmitted]);
+
+    const DisplayArticles = () => {
+        if (error) {
+            return <p>Error: {error.message}</p>;
+        } else if (!isLoaded) {
+            return <p>Loading...</p>;
+        } else {
+            return (
+                <>
+                    {
+                        posts.map((post:any) => {
+                            return <ArticleMain { ...post } key={post.postId} />
+                        })
+                    }
+                </>
+            )
+        }
+    }
 
     return (
         <div className="app">
@@ -45,44 +82,7 @@ const App = () => {
             </header>
             <main className="main-container">
                 <section className="main-column">
-                    <article>
-                        <hr className="horiz-line" />
-                        <div className="post-meta-container">
-                            <img src="https://randomuser.me/api/portraits/men/60.jpg" alt="John Doe's avatar" className="author-avatar"/>
-                            <div className="author-date-container">
-                                <h3 id="author-name">John Doe</h3>
-                                <span className="post-date">November 2, 2021</span>
-                            </div>
-                            <div className="post-likes">
-                                <button>❤️ 743</button>
-                            </div>
-                        </div>
-                        <div>
-                            <h2>Natural Language Interface Accessibility</h2>
-                            <p className="post-text">Spoken interaction with mobile devices and consumer...</p>
-                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
-                            <a href="#" id="read-more-lnk">Read more...</a>
-                        </div>
-                    </article>
-                    <article>
-                    <hr className="horiz-line" />
-                        <div className="post-meta-container">
-                            <img src="https://randomuser.me/api/portraits/women/51.jpg" alt="Marcia Sanders' avatar" className="author-avatar" />
-                            <div className="author-date-container">
-                                <h3 id="author-name">Marcia Sanders</h3>
-                                <span className="post-date">November 1, 2021</span>
-                            </div>
-                            <div className="post-likes">
-                                <button>❤️ 956</button>
-                            </div>
-                        </div>
-                        <div>
-                            <h2>Accessibility of Remote Meetings</h2>
-                            <p className="post-text">The impact of COVID-19 has seen a substancial increase...</p>
-                            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
-                            <a href="#" id="read-more-lnk">Read more...</a>
-                        </div>
-                    </article>
+                    <DisplayArticles />
                 </section>
                 <aside className="aside-column">
                     <div className="sidebar-container">
