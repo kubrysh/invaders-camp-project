@@ -29,11 +29,11 @@ router.post('/', async (req, res) => {
         const data = JSON.parse(rawData);
         console.log("Reading posts.db.json file...");
 
-        // Adding ID & random likes & photo to the new post
+        // Adding ID, Date, random likes & photo to the new post
         const reqData = {
             ...req.body,
             postId: data.posts.length + 1,
-            postDate: "November 26, 2021",
+            postDate: Date.now(),
             authorPhoto: `https://randomuser.me/api/portraits/${ Math.round(Math.random()) ? "women" : "men" }/${ Math.floor(Math.random() * 100) }.jpg`,
             likes: Math.floor(Math.random() * 1001)
         };

@@ -1,5 +1,6 @@
-const ArticleMain = (props: any) => {
+import dateStringifier from "../utils/dateStringifier";
 
+const ArticleMain = (props: any) => {
     return (
         <article>
             <hr className="horiz-line" />
@@ -7,7 +8,7 @@ const ArticleMain = (props: any) => {
                 <img src={props.authorPhoto} alt={`${props.authorName}'s avatar`} className="author-avatar" />
                 <div className="author-date-container">
                     <h3 id="author-name">{props.authorName}</h3>
-                    <span className="post-date">{props.postDate}</span>
+                    <span className="post-date">{dateStringifier(props.postDate)}</span>
                 </div>
                 <div className="post-likes">
                     <button>❤️ {props.likes}</button>
