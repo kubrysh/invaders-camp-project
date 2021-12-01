@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const apiRouter = require("./api");
@@ -7,10 +7,15 @@ const apiRouter = require("./api");
 const app = express();
 const port = process.env.PORT || 3001;
 
+// Configuring Cors & handling preflight requests
 app.use(cors({
     origin: `${process.env.NODE_ENV === "production" ?
         "https://kubrysh-react-blog-app.herokuapp.com" : "http://localhost:3000"
-    }`
+    }`,
+    methods: [ "GET", "HEAD", "PUT", "PATCH", "POST", "DELETE" ],
+    allowedHeaders: "Content-Type",
+    preflightContinue: false,
+    optionsSuccessStatus: 204
 }));
 app.use(bodyParser.json());
 
@@ -32,5 +37,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-    console.log(`Node API app listening at localhost:${port}`)
+    console.log(`Node API app listening at localhost:${port}`);
 });
