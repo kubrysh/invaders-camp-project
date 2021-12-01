@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const apiRouter = require("./api");
@@ -37,5 +37,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-    console.log(`Node API app listening at localhost:${port}`)
+    console.log(`Node API app listening at localhost:${port}`);
 });

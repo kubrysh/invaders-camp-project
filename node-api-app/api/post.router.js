@@ -3,7 +3,7 @@ const fs = require("fs/promises");
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
 
     try {
         // Reading hardcoded posts file DB
@@ -21,7 +21,7 @@ router.get('/', async (req, res, next) => {
 
 });
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res, next) => {
 
     try {
         // Reading hardcoded posts DB
