@@ -1,6 +1,8 @@
+import { useEffect } from "react";
+
 import { Formik, Form, Field } from 'formik';
 import "./NewArticleForm.css";
-import { newArticleSchema } from "./NewArticleValidation"
+import { newArticleSchema } from "../utils/NewArticleValidation"
 
 const NewArticleForm = (props:any) => {
     return (

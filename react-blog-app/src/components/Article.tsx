@@ -1,6 +1,6 @@
 import dateStringifier from "../utils/dateStringifier";
 
-const ArticleMain = (props: any) => {
+const Article = (props: any) => {
     return (
         <article>
             <hr className="horiz-line" />
@@ -24,4 +24,4 @@ const ArticleMain = (props: any) => {
     )
 }
 
-export default ArticleMain;
+export default Article;

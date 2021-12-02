@@ -9,6 +9,7 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
 - 🔌 [Usage](#usage)
 - 🌍 [Depolyment](#deployment)
 - 📚 [Homework](#homework)
+  - [#5 (Nov 30, 2021 – D/L: Unknown)](#-homework-5-nov-30-2021--dl-unknown)
   - [#4 (Nov 24, 2021 – D/L: Nov 26, 2021)](#-homework-4-nov-24-2021--dl-nov-26-2021)
   - [#3 (Nov 15, 2021 – D/L: End of The Course)](#-homework-3-nov-15-2021--dl-end-of-the-course)
   - [#2 (Nov 12, 2021 – D/L: Nov 20, 2021)](#-homework-2-nov-12-2021--dl-nov-20-2021)
@@ -28,13 +29,40 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
 
 `npm start`
 
+3. To launch the local **MongoDB** database for development usage:
+
+`cd mongo-db-docker`
+
+`docker-compose up --build -d mongodb-blog`
+
 ## Deployment
 
 **React App** is deployed on [Heroku](https://kubrysh-react-blog-app.herokuapp.com) using [create-react-app-buildpack](https://github.com/mars/create-react-app-buildpack) and served via [Nginx](https://nginx.org/en/).
 
 **Node App** is also deployed on [Heroku](https://kubrysh-node-api-app.herokuapp.com).
 
+**MongoDB database** is deployed on [Atlas](https://www.mongodb.com/atlas/database).
+
 ## Homework
+
+### 🔘 Homework #5 (Nov 30, 2021 – D/L: Unknown)
+
+#### Task:
+
+> * Install MongoDB
+> * Design a DB structure for the blog application
+>   * Posts
+>   * Comments
+>   * Tags
+>   * Users
+> * Seed DB and play with different queries (aggregate, filter and sort)
+
+#### Comments:
+
+* Created a local MongoDB database via Docker for development usage
+* Deployed a cloud MongoDB database on [Atlas](https://www.mongodb.com/atlas/database)
+
+---
 
 ### ✅ Homework #4 (Nov 24, 2021 – D/L: Nov 26, 2021)
 
@@ -111,7 +139,7 @@ My solution:
 
 The given regexp is used to test if a file path string ends with: `.tsx`, `.ts`, `.jsx`, `.js`.
 
-1. `\.` – first character is a `.` (escaped dot)
+1. `\.` – character is a `.` (escaped dot)
 2. `(t|j)` – the next character is `t` or `j` (using alternation operator)
 3. `s` – following character is literal `s`
 4. `x?` – `?` character matches the preceding item `x` 0 or 1 times
