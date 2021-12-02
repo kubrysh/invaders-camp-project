@@ -9,6 +9,7 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
 - 🔌 [Usage](#usage)
 - 🌍 [Depolyment](#deployment)
 - 📚 [Homework](#homework)
+  - [#6 (Dec 2, 2021 – D/L: Unknown)](#-homework-6-dec-2-2021--dl-unknown)
   - [#5 (Nov 30, 2021 – D/L: Unknown)](#-homework-5-nov-30-2021--dl-unknown)
   - [#4 (Nov 24, 2021 – D/L: Nov 26, 2021)](#-homework-4-nov-24-2021--dl-nov-26-2021)
   - [#3 (Nov 15, 2021 – D/L: End of The Course)](#-homework-3-nov-15-2021--dl-end-of-the-course)
@@ -44,6 +45,19 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
 **MongoDB database** is deployed on [Atlas](https://www.mongodb.com/atlas/database).
 
 ## Homework
+
+### 🔘 Homework #6 (Dec 2, 2021 – D/L: Unknown)
+
+#### Task:
+
+> * Use mocked (seeded) data from DB
+> * Add routing to application with calls to back end fetching fake data
+
+#### Comments:
+
+* WIP
+
+---
 
 ### 🔘 Homework #5 (Nov 30, 2021 – D/L: Unknown)
 
