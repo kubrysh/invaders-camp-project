@@ -161,3 +161,109 @@
 .footer p {
     font-size: 18px;
 }
+
+.popup-background {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.popup-container {
+    padding: 15px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+}
+
+.popup-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header.is-success {
+    color: #308342;
+}
+
+.close-btn {
+    border: none;
+    background-color: transparent;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.form-container, .label-container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.label-container {
+    margin: 0.5em 0;
+    font-size: 16px;
+}
+
+input, .text-container  {
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid rgba(0,0,0,0.7);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+input.is-warning, .text-container.is-warning {
+    border: 1px solid #f02849;
+}
+
+.text-container {
+    height: 100px;
+    resize: none;
+    font-family: inherit;
+}
+
+.error-message {
+    margin-top: 2px;
+    font-size: 13px;
+    color: #f02849;
+}
+
+.submit-btn {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+    margin: 0.5em auto;
+    appearance: none;
+    background-color: #48b960;
+    font-size: 14px;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    padding: 6px 16px;
+    white-space: nowrap;
+    word-wrap: break-word;
+}
+
+.submit-btn:hover {
+    background-color: #3aa151;
+    text-decoration: none;
+    transition-duration: 0.1s;
+  }
+
+.submit-btn:active {
+    background-color: #308342;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+}
+
+.submit-btn:focus {
+    outline: 1px transparent;
+}
