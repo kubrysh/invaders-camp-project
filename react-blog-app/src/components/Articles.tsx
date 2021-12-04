@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useArticles from "../hooks/useArticles";
 import dateStringifier from "../utils/dateStringifier";
 
 const RenderArticle = (props: any) => {
@@ -29,36 +29,16 @@ const RenderArticle = (props: any) => {
 
 const Articles = (props:any) => {
 
-    const [error, setError] = useState<any>(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [posts, setPosts] = useState([]);
+    const { articles, isLoading } = useArticles();
 
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/api/posts`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setIsLoaded(true);
-                    setPosts(result.posts);
-                },
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                }
-            )
-    }, []);
-
-
-    if (error) {
-        return <p>Error: {error.message}</p>;
-    } else if (!isLoaded) {
-        return <p>Loading...</p>;
+    if (isLoading) {
+        return <p>Loading...</p>
     } else {
         return (
             <>
                 {
-                    posts.map((post:any) => {
-                        return <RenderArticle { ...post } key={post.postId} />
+                    articles.map((article:any) => {
+                        return <RenderArticle { ...article } key={article.postId} />
                     })
                 }
             </>
