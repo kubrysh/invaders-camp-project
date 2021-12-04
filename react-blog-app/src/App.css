@@ -66,11 +66,11 @@
 .main-container {
     display: flex;
     flex-direction: row;
+    min-height: calc(100vh - 172px);
 }
 
 .main-column {
     flex-grow: 8;
-    min-height: calc(100vh - 172px);
     margin: 0 20px;
 }
 
