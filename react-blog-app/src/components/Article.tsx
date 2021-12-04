@@ -1,26 +1,40 @@
+import { useState, useEffect } from "react";
 import dateStringifier from "../utils/dateStringifier";
 
-const Article = (props: any) => {
+const Article = ({ id }:any) => {
+
+    const [article, setArticle] = useState<any>({});
+
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}/api/posts`)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setArticle(result.posts.find((el:any) => el.postId === parseInt(id)));
+                },
+                (error) => {
+                    console.log(error);
+                }
+            )
+    }, [id]);
+
     return (
-        <article>
-            <hr className="horiz-line" />
+        <section className="main-column">
+            <h1 id="post-title">{article.postTitle}</h1>
             <div className="post-meta-container">
-                <img src={props.authorPhoto} alt={`${props.authorName}'s avatar`} className="author-avatar" />
+                <img src={article.authorPhoto} alt={`${article.authorName}'s avatar`} className="author-avatar" />
                 <div className="author-date-container">
-                    <h3 id="author-name">{props.authorName}</h3>
-                    <span className="post-date">{dateStringifier(props.postDate)}</span>
+                    <h3 id="author-name">{article.authorName}</h3>
+                    <span className="post-date">{dateStringifier(article.postDate)}</span>
                 </div>
                 <div className="post-likes">
-                    <button>❤️ {props.likes}</button>
+                    <button>❤️ {article.likes}</button>
                 </div>
             </div>
             <div>
-                <h2>{props.postTitle}</h2>
-                <p className="post-text">{props.postText}</p>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
-                <a href="#" id="read-more-lnk">Read more...</a>
+                <p className="post-text">{article.postText}</p>
             </div>
-        </article>
+        </section>
     )
 }
 
