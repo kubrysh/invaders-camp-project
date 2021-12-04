@@ -10,6 +10,7 @@ import ArticlePage from "./pages/ArticlePage";
 import NewArticlePage from "./pages/NewArticlePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import NewArticleModal from "./modals/NewArticleModal";
+import FormSuccessModal from "./modals/FormSuccessModal";
 
 const App = () => {
 
@@ -27,6 +28,12 @@ const App = () => {
                 <Route path="/article_:articleId" component={ArticlePage} />
                 <Route path="*" component={NotFoundPage} />
             </Switch>
+
+            {background && background.pathname !== "/newarticle/success" && <Route exact path="/newarticle/success" children={
+                <Modal>
+                    <FormSuccessModal />
+                </Modal>
+            } />}
 
             {background && background.pathname !== "/newarticle" && <Route exact path="/newarticle" children={
                 <Modal>

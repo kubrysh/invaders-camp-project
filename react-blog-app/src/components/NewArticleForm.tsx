@@ -1,7 +1,12 @@
+import { useHistory, useLocation } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
 import { newArticleSchema } from "../utils/newArticleValidationSchema";
 
 const NewArticleForm = ({ type }:any) => {
+
+    const history = useHistory();
+    const location:any = useLocation();
+
     return(
         <Formik
             initialValues={{
@@ -25,10 +30,16 @@ const NewArticleForm = ({ type }:any) => {
                 })
                     .then(
                         (res) => {
+                            history.push("/newarticle/success", {
+                                background: //background for success modal
+                                    (type === "modal" && location.state.background) //prev location
+                                        ||
+                                    (type === "page" && location) //current location
                             })
                         },
                         (error) => {
                             console.log(error);
+                            history.goBack();
                         }
                     )
                     
