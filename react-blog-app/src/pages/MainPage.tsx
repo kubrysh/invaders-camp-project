@@ -1,11 +1,11 @@
 import Articles from "../components/Articles";
 import Sidebar from "../components/Sidebar";
 
-const MainPage = (props:any) => {
+const MainPage = () => {
     return(
         <main className="main-container">
             <section className="main-column">
-                <Articles isNewArticleSubmitted={props.isNewArticleSubmitted} />
+                <Articles />
             </section>
             <Sidebar />
         </main>
