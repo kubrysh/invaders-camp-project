@@ -6,9 +6,18 @@ const useArticle = (id:any) => {
     const baseURL = `${process.env.REACT_APP_API_URL}/api/posts/${id}`;
 
     const isCurrent = useRef(true);
-    const [article, setArticle] = useState({});
+    const [article, setArticle]:any = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const prevTitle = document.title;
+        //preventing title change to undefined
+        document.title = article.postTitle ?? prevTitle;
+        return () => {
+            document.title = prevTitle;
+        };
+    }, [article]);
 
     useEffect(() => {
         return () => {
