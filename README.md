@@ -46,7 +46,7 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
 
 ## Homework
 
-### 🔘 Homework #6 (Dec 2, 2021 – D/L: Unknown)
+### ✅ Homework #6 (Dec 2, 2021 – D/L: Unknown)
 
 #### Task:
 
@@ -55,7 +55,14 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
 
 #### Comments:
 
-* WIP
+* Added routing to React App:
+  * dynamic routing using URL params to Article pages
+  * routing to a Not Found Page and redirecting to it in case of a 404 error
+  * routing to New Article Form, which is displayed as a modal or a page (clicked link in a header - results in a modal, while clicking on the same link from outside the application will open New Article Form as a page.
+  * conditional routing to a Form Success modal, which is displayed only when invoked from a Form Component
+* Improved overall React App structure
+* Added corresponding pages & components
+* **NOTE**: *I haven't paid much attention to styling as for this homework, because soon I will be adding MUI and redoing everything*
 
 ---
 
@@ -75,6 +82,11 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
 
 * Created a local MongoDB database via Docker for development usage
 * Deployed a cloud MongoDB database on [Atlas](https://www.mongodb.com/atlas/database)
+* TBD:
+  * Connect Node App to MongoDB using Mongoose
+  * Design a DB structure
+  * Implement DB data quering for API endpoints
+  * Populate DB with initial values & implement once a day data resetting to initial values on production DB
 
 ---
 
@@ -95,7 +107,7 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
 * Implementeed article data storage in a file
 * Deployed React App served by Nginx on Heroku
 * Deployed Node App on Heroku
-* TBD: rework data fetching with axios
+* UPD 05.12.2021: reworked API requests with axios
 
 ---
 
