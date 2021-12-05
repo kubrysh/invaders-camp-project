@@ -26,8 +26,8 @@ const NewArticleForm = ({ type }:any) => {
                             ||
                         (type === "page" && location) //current location
                 })
-            } else if (response) {
-                console.log(response.status);
+            } else {
+                console.log(`Error ${response.status}: ${response.statusText}`);
                 history.goBack();
             }
         } catch (e) {
