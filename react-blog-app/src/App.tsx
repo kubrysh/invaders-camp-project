@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import "./App.css";
 
 import Header from "./components/Header";
@@ -26,7 +26,10 @@ const App = () => {
                 <Route exact path="/" component={MainPage} />
                 <Route exact path="/newarticle" component={NewArticlePage} />
                 <Route path="/article_:articleId" component={ArticlePage} />
-                <Route path="*" component={NotFoundPage} />
+                <Route path="/404" component={NotFoundPage} />
+                <Route path="*">
+                    <Redirect to="/404"/>
+                </Route>
             </Switch>
 
             {background && background.pathname !== "/newarticle/success" && <Route exact path="/newarticle/success" children={
