@@ -1,11 +1,16 @@
+import { useHistory } from "react-router";
 import useArticle from "../hooks/useArticle";
 import dateStringifier from "../utils/dateStringifier";
 
 const Article = ({ id }:any) => {
 
-    const { article, isLoading }:any = useArticle(id);
+    const { article, isLoading, error }:any = useArticle(id);
+    const history = useHistory();
 
-    if (isLoading) {
+    if (error && error.response.status === 404) {
+        history.replace("/404");
+        return null;
+    } else if (isLoading) {
         return <p>Loading...</p>
     } else {
         return (

@@ -5,6 +5,8 @@ const baseURL = `${process.env.REACT_APP_API_URL}/api/posts`;
 
 const useArticle = (id:any) => {
 
+    const baseURL = `${process.env.REACT_APP_API_URL}/api/posts/${id}`;
+
     const [article, setArticle] = useState({});
     const [isLoading, setIsLoading] = useState(false);
 
@@ -14,17 +16,18 @@ const useArticle = (id:any) => {
 
             try {
                 const { data } = await axios.get(baseURL);    
-                setArticle(data.posts.find((el:any) => el.postId === parseInt(id)));
+                    setArticle(data);
                 setIsLoading(false);
-            } catch (e) {
+            } catch (e:any) {
+                setError(e);
                 console.error(e);
             }
         };
 
         fetchArticle();
-    }, [id]);
+    }, [baseURL, id]);
 
-    return { article, isLoading };
+    return { article, isLoading, error };
 }
 
 export default useArticle;
