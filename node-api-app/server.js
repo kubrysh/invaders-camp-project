@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 const apiRouter = require("./api");
@@ -39,3 +40,24 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
     console.log(`Node API app listening at localhost:${port}`);
 });
+
+// Connecting to DB
+const uri = process.env.MONGODB_URI || "mongodb://admin:password@localhost:27017/blogDB"
+
+const dbConnect = async () => {
+    try {
+        await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+dbConnect();
+
+mongoose.connection
+    .once("open", () => {
+        console.log(`Connected to ${
+            process.env.NODE_ENV === "production" ? "production" : "development"
+        } MongoDB instance`);
+    })
+    .on("error", err => console.error(err));
