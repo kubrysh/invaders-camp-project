@@ -82,11 +82,15 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
 
 * Created a local MongoDB database via Docker for development usage
 * Deployed a cloud MongoDB database on [Atlas](https://www.mongodb.com/atlas/database)
+* Connected Node App to MongoDB using Mongoose
+* Designed a DB structure for Articles, Comments, Tags and Users:
+  * DB Schema was designed with the following requirements in mind:
+    * Users can only leave and delete their own comments on the individual article page
+    * If a user deletes their account - their comments will remain, but the name will change to `Deleted User`. The likes will be removed.
+* Added initial values for DB which are added on docker container creation
 * TBD:
-  * Connect Node App to MongoDB using Mongoose
-  * Design a DB structure
   * Implement DB data quering for API endpoints
-  * Populate DB with initial values & implement once a day data resetting to initial values on production DB
+  * Implement once a day data resetting to initial values on production DB
 
 ---
 

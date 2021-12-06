@@ -2,12 +2,13 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const articleSchema = new Schema({
-    _id: { type: Number, required: true },
+    articleId: { type: Number, required: true, unique: true },
     title: { type: String, required: true }, 
     author: { type: Schema.Types.ObjectId, ref: "User", required: true },
     body: { type: String, required: true },
     date: { type: Date, default: Date.now, required: true },
     comments: [{
+        id: { type: Schema.Types.ObjectId, required: true, unique: true },
         body: { type: String, required: true },
         date: { type: Date, default: Date.now, required: true },
         author: { type: Schema.Types.ObjectId, ref: "User", required: true },

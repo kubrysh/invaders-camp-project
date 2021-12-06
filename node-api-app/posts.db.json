@@ -1,22 +1,22 @@
 {
-    "posts": [
-        {
-            "postId": 2,
-            "authorName": "John Doe",
-            "authorPhoto": "https://randomuser.me/api/portraits/men/60.jpg",
-            "postDate": "November 2, 2021",
-            "postTitle": "Natural Language Interface Accessibility",
-            "postText": "Spoken interaction with mobile devices and consumer...",
-            "likes": 743
-        },
-        {
-            "postId": 1,
-            "authorName": "Marcia Sanders",
-            "authorPhoto": "https://randomuser.me/api/portraits/women/51.jpg",
-            "postDate": "November 1, 2021",
-            "postTitle": "Accessibility of Remote Meetings",
-            "postText": "The impact of COVID-19 has seen a substancial increase...",
-            "likes": 956
-        }
-    ]
+  "posts": [
+    {
+      "postId": 2,
+      "authorName": "John Doe",
+      "authorPhoto": "https://randomuser.me/api/portraits/men/60.jpg",
+      "postDate": 1635874692391,
+      "postTitle": "Natural Language Interface Accessibility",
+      "postText": "Spoken interaction with mobile devices and consumer...",
+      "likes": 743
+    },
+    {
+      "postId": 1,
+      "authorName": "Marcia Sanders",
+      "authorPhoto": "https://randomuser.me/api/portraits/women/51.jpg",
+      "postDate": 1635794748738,
+      "postTitle": "Accessibility of Remote Meetings",
+      "postText": "The impact of COVID-19 has seen a substancial increase...",
+      "likes": 956
+    }
+  ]
 }
