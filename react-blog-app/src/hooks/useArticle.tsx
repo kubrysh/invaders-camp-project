@@ -3,7 +3,7 @@ import axios from "axios";
 
 const useArticle = (id:any) => {
 
-    const baseURL = `${process.env.REACT_APP_API_URL}/api/posts/${id}`;
+    const baseURL = `${process.env.REACT_APP_API_URL}/api/articles/${id}`;
 
     const isCurrent = useRef(true);
     const [article, setArticle]:any = useState({});
@@ -13,7 +13,7 @@ const useArticle = (id:any) => {
     useEffect(() => {
         const prevTitle = document.title;
         //preventing title change to undefined
-        document.title = article.postTitle ?? prevTitle;
+        document.title = article.articleTitle ?? prevTitle;
         return () => {
             document.title = prevTitle;
         };

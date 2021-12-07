@@ -6,22 +6,22 @@ const RenderArticle = (props: any) => {
     return (
         <article>
             <hr className="horiz-line" />
-            <div className="post-meta-container">
+            <div className="article-meta-container">
                 <img src={props.authorPhoto} alt={`${props.authorName}'s avatar`} className="author-avatar" />
                 <div className="author-date-container">
                     <h3 id="author-name">{props.authorName}</h3>
-                    <span className="post-date">{dateStringifier(props.postDate)}</span>
+                    <span className="article-date">{dateStringifier(props.articleDate)}</span>
                 </div>
-                <div className="post-likes">
+                <div className="article-likes">
                     <button>❤️ {props.likes}</button>
                 </div>
             </div>
             <div>
                 <h2>
-                    <Link to={`/article_${props.postId}`}>{props.postTitle}</Link>
+                    <Link to={`/article_${props.articleId}`}>{props.articleTitle}</Link>
                 </h2>
-                <p className="post-text">{props.postText}</p>
-                <Link to={`/article_${props.postId}`} id="read-more-lnk">Read more...</Link>
+                <p className="article-text">{props.articleText}</p>
+                <Link to={`/article_${props.articleId}`} id="read-more-lnk">Read more...</Link>
             </div>
         </article>
     )
@@ -38,7 +38,7 @@ const Articles = (props:any) => {
             <>
                 {
                     articles.map((article:any) => {
-                        return <RenderArticle { ...article } key={article.postId} />
+                        return <RenderArticle { ...article } key={article.articleId} />
                     })
                 }
             </>

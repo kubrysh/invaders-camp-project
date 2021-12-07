@@ -3,7 +3,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
 import { newArticleSchema } from "../utils/newArticleValidationSchema";
 
-const baseURL = `${process.env.REACT_APP_API_URL}/api/posts`;
+const baseURL = `${process.env.REACT_APP_API_URL}/api/articles`;
 
 const NewArticleForm = ({ type }:any) => {
 
@@ -41,8 +41,8 @@ const NewArticleForm = ({ type }:any) => {
             initialValues={{
                 authorName: "",
                 authorEmail: "",
-                postTitle: "",
-                postText: ""
+                articleTitle: "",
+                articleText: ""
             }}
             validationSchema={newArticleSchema}
             onSubmit = {(values:any) => handleSubmit(values)}
@@ -77,26 +77,26 @@ const NewArticleForm = ({ type }:any) => {
                     <label className="label-container">
                         Title:
                         <Field
-                            name="postTitle"
-                            className={`${errors.postTitle && touched.postTitle && "is-warning"}`}
+                            name="articleTitle"
+                            className={`${errors.articleTitle && touched.articleTitle && "is-warning"}`}
                             placeholder="Your Article Title..."
                             maxLength={100}
                         />
-                        {errors.postTitle && touched.postTitle ? (
-                            <div className="error-message" >{errors.postTitle}</div>
+                        {errors.articleTitle && touched.articleTitle ? (
+                            <div className="error-message" >{errors.articleTitle}</div>
                         ) : null}
                     </label>
                     <label className="label-container">
-                        Article Text: ({560 - values.postText.length} characters)
+                        Article Text: ({560 - values.articleText.length} characters)
                         <Field
-                            name="postText"
+                            name="articleText"
                             as="textarea"
-                            className={`text-container ${errors.postText && touched.postText && "is-warning"}`}
+                            className={`text-container ${errors.articleText && touched.articleText && "is-warning"}`}
                             placeholder="Your Article Text..."
                             maxLength={560}
                         />
-                        {errors.postText && touched.postText ? (
-                            <div className="error-message" >{errors.postText}</div>
+                        {errors.articleText && touched.articleText ? (
+                            <div className="error-message" >{errors.articleText}</div>
                         ) : null}
                     </label>
                     <button className="submit-btn" type="submit">Submit</button>

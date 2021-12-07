@@ -8,11 +8,11 @@ export const newArticleSchema = yup.object().shape({
     authorEmail: yup.string()
         .email('Invalid email!')
         .required('Email is required!'),
-    postTitle: yup.string()
+    articleTitle: yup.string()
         .min(2, 'Title is too short!')
         .max(100, 'Title is too Long!')
         .required('Title is required!'),
-    postText: yup.string()
+    articleText: yup.string()
         .max(560, 'Article text is too Long!')
         .required('Article text is required!')
 });
