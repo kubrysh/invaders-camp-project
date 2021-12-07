@@ -66,7 +66,7 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
 
 ---
 
-### 🔘 Homework #5 (Nov 30, 2021 – D/L: Unknown)
+### ✅ Homework #5 (Nov 30, 2021 – D/L: Unknown)
 
 #### Task:
 
@@ -88,9 +88,7 @@ Live: [kubrysh-react-blog-app.herokuapp.com](https://kubrysh-react-blog-app.hero
     * Users can only leave and delete their own comments on the individual article page
     * If a user deletes their account - their comments will remain, but the name will change to `Deleted User`. The likes will be removed.
 * Added initial values for DB which are added on docker container creation
-* TBD:
-  * Implement DB data quering for API endpoints
-  * Implement once a day data resetting to initial values on production DB
+* Implemented Article service for DB data quering and writing
 
 ---
 
