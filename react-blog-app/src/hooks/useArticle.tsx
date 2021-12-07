@@ -13,7 +13,7 @@ const useArticle = (id:any) => {
     useEffect(() => {
         const prevTitle = document.title;
         //preventing title change to undefined
-        document.title = article.articleTitle ?? prevTitle;
+        document.title = article.title ?? prevTitle;
         return () => {
             document.title = prevTitle;
         };

@@ -11,7 +11,7 @@ db.createUser(
     }
 );
 
-db.Users.insertMany([
+db.users.insertMany([
     {
         _id: ObjectId("61ae6085cff5c15799214c37"),
         email: "johndoe@example.com",
@@ -23,7 +23,8 @@ db.Users.insertMany([
         isAdmin: false,
         password: "",
         dateRegistered: 1635768314132,
-        likedArticles: [ObjectId("61ae6c94c6d7ccfa7d7f0943")]
+        likedArticles: [ObjectId("61ae6c94c6d7ccfa7d7f0943")],
+        __v: 0
     },
     {
         _id: ObjectId("61ae6085cff5c15799214c38"),
@@ -36,39 +37,45 @@ db.Users.insertMany([
         isAdmin: false,
         password: "",
         dateRegistered: 1635779879054,
-        likedArticles: [ObjectId("61ae6cb0c6d7ccfa7d7f0944")]
+        likedArticles: [ObjectId("61ae6cb0c6d7ccfa7d7f0944")],
+        __v: 0
     }
 ]);
 
-db.Tags.insertMany([
+db.tags.insertMany([
     {
         _id: ObjectId("61ae682dba54574a9d25c08a"),
         name: "technology",
-        articles: [ObjectId("61ae6c94c6d7ccfa7d7f0943")]
+        articles: [ObjectId("61ae6c94c6d7ccfa7d7f0943")],
+        __v: 0
     },
     {
         _id: ObjectId("61ae682dba54574a9d25c08b"),
         name: "finance",
-        articles: []
+        articles: [],
+        __v: 0
     },
     {
         _id: ObjectId("61ae682dba54574a9d25c08c"),
         name: "medicine",
-        articles: [ObjectId("61ae6cb0c6d7ccfa7d7f0944")]
+        articles: [ObjectId("61ae6cb0c6d7ccfa7d7f0944")],
+        __v: 0
     },
     {
         _id: ObjectId("61ae682dba54574a9d25c08d"),
         name: "politics",
-        articles: []
+        articles: [],
+        __v: 0
     },
     {
         _id: ObjectId("61ae682dba54574a9d25c08e"),
         name: "art",
-        articles: []
+        articles: [],
+        __v: 0
     }
 ]);
 
-db.Articles.insertMany([
+db.articles.insertMany([
     {
         _id: ObjectId("61ae6c94c6d7ccfa7d7f0943"),
         articleId: 1,
@@ -83,7 +90,8 @@ db.Articles.insertMany([
             author: ObjectId("61ae6085cff5c15799214c37"),
         }],
         tags: [ObjectId("61ae682dba54574a9d25c08a")],
-        likes: [ObjectId("61ae6085cff5c15799214c37")]
+        likes: [ObjectId("61ae6085cff5c15799214c37")],
+        __v: 0
     },
     {
         _id: ObjectId("61ae6cb0c6d7ccfa7d7f0944"),
@@ -99,6 +107,7 @@ db.Articles.insertMany([
             author: ObjectId("61ae6085cff5c15799214c38"),
         }],
         tags: [ObjectId("61ae682dba54574a9d25c08c")],
-        likes: [ObjectId("61ae6085cff5c15799214c37")]
+        likes: [ObjectId("61ae6085cff5c15799214c37")],
+        __v: 0
     }
 ]);
