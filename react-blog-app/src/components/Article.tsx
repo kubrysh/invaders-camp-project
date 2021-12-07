@@ -15,19 +15,19 @@ const Article = ({ id }:any) => {
     } else {
         return (
             <section className="main-column">
-                <h1 id="article-title">{article.articleTitle}</h1>
+                <h1 id="article-title">{article.title}</h1>
                 <div className="article-meta-container">
-                    <img src={article.authorPhoto} alt={`${article.authorName}'s avatar`} className="author-avatar" />
+                    <img src={article.authorPhoto} alt={`${article.author}'s avatar`} className="author-avatar" />
                     <div className="author-date-container">
-                        <h3 id="author-name">{article.authorName}</h3>
-                        <span className="article-date">{dateStringifier(article.articleDate)}</span>
+                        <h3 id="author-name">{article.author}</h3>
+                        <span className="article-date">{dateStringifier(article.date)}</span>
                     </div>
                     <div className="article-likes">
                         <button>❤️ {article.likes}</button>
                     </div>
                 </div>
                 <div>
-                    <p className="article-text">{article.articleText}</p>
+                    <p className="article-text">{article.body}</p>
                 </div>
             </section>
         )

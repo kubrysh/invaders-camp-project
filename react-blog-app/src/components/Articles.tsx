@@ -7,10 +7,10 @@ const RenderArticle = (props: any) => {
         <article>
             <hr className="horiz-line" />
             <div className="article-meta-container">
-                <img src={props.authorPhoto} alt={`${props.authorName}'s avatar`} className="author-avatar" />
+                <img src={props.authorPhoto} alt={`${props.author}'s avatar`} className="author-avatar" />
                 <div className="author-date-container">
-                    <h3 id="author-name">{props.authorName}</h3>
-                    <span className="article-date">{dateStringifier(props.articleDate)}</span>
+                    <h3 id="author-name">{props.author}</h3>
+                    <span className="article-date">{dateStringifier(props.date)}</span>
                 </div>
                 <div className="article-likes">
                     <button>❤️ {props.likes}</button>
@@ -18,9 +18,9 @@ const RenderArticle = (props: any) => {
             </div>
             <div>
                 <h2>
-                    <Link to={`/article_${props.articleId}`}>{props.articleTitle}</Link>
+                    <Link to={`/article_${props.articleId}`}>{props.title}</Link>
                 </h2>
-                <p className="article-text">{props.articleText}</p>
+                <p className="article-text">{props.body}</p>
                 <Link to={`/article_${props.articleId}`} id="read-more-lnk">Read more...</Link>
             </div>
         </article>
