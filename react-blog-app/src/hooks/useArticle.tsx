@@ -38,6 +38,7 @@ const useArticle = (id:any) => {
                 }
             } catch (e:any) {
                 setError(e);
+                setIsLoading(false);
                 console.error(e);
             }
         };
