@@ -1,22 +1,29 @@
+import { Link, useLocation } from "react-router-dom";
 import logo from "../logo.svg";
 
 const Header = (props:any) => {
+
+    const location = useLocation();
+
     return(
         <header className="header-container">
             <div className="logo-container">
                 <img src={logo} className="app-logo" alt="logo" />
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
-                <a href="#" className="header-element" id="logo-text">
+                <Link to="/" className="header-element" id="logo-text">
                     Ihor Kubrysh's Blog App
-                </a>
+                </Link>
             </div>
             <nav>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
-                <a href="#" className="nav-element">Home</a>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
-                <a href="#" onClick={() => props.setIsNewArticleOpen(true)} className="nav-element">✍️ New Article</a>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
-                <a href="#" className="nav-element">Username</a>
+                <Link to="/" className="nav-element">Home</Link>
+                <Link to={{
+                    pathname: "/newarticle",
+                    state: { background: location }
+                }}
+                    className="nav-element"
+                >
+                    ✍️ New Article
+                </Link>
+                <Link to="/" className="nav-element">Username</Link>
             </nav>
         </header>
     )

@@ -52,4 +52,25 @@ router.post("/", async (req, res, next) => {
 
 });
 
+router.get("/:id", async (req, res, next) => {
+
+    try {
+        // Reading hardcoded posts file DB
+        const rawData = await fs.readFile("./posts.db.json", "utf-8");
+        const parsedData = JSON.parse(rawData);
+        console.log("Reading posts.db.json file...");
+
+        const post = parsedData.posts.find((el) => el.postId === parseInt(req.params.id));
+
+        if (post) {
+            res.json({ ...post });
+        } else {
+            res.sendStatus(404);
+        }
+    } catch (error) {
+        next(error);
+    }
+
+});
+
 module.exports = router;

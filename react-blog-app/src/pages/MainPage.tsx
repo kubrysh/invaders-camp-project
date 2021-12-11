@@ -1,17 +1,13 @@
 import Articles from "../components/Articles";
+import Sidebar from "../components/Sidebar";
 
-const MainPage = (props:any) => {
+const MainPage = () => {
     return(
         <main className="main-container">
             <section className="main-column">
-                <Articles isNewArticleSubmitted={props.isNewArticleSubmitted} />
+                <Articles />
             </section>
-            <aside className="aside-column">
-                <div className="sidebar-container">
-                    <h2>Popular Tags</h2>
-                    <p>No tags are here...yet</p>
-                </div>
-            </aside>
+            <Sidebar />
         </main>
     )
 }
