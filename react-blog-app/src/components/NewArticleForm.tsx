@@ -1,14 +1,10 @@
 import axios from "axios";
-import { useHistory, useLocation } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
 import { newArticleSchema } from "../utils/newArticleValidationSchema";
 
 const baseURL = `${process.env.REACT_APP_API_URL}/api/articles`;
 
-const NewArticleForm = ({ type }:any) => {
-
-    const history = useHistory();
-    const location:any = useLocation();
+const NewArticleForm = ({ openSuccess, onError }:any) => {
 
     const handleSubmit = async (values:any) => {
         let regexp = /^\s+|\s+$/g;
@@ -20,19 +16,14 @@ const NewArticleForm = ({ type }:any) => {
         try {
             const response = await axios.post(baseURL, submitValues);
             if (response.status === 201) {
-                history.push("/newarticle/success", {
-                    background: //background for success modal
-                        (type === "modal" && location.state.background) //prev location
-                            ||
-                        (type === "page" && location) //current location
-                })
+                openSuccess();
             } else {
                 console.log(`Error ${response.status}: ${response.statusText}`);
-                history.goBack();
+                onError();
             }
         } catch (e) {
             console.error(e);
-            history.goBack();
+            onError();
         }
     }
 
