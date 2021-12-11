@@ -3,7 +3,7 @@ import axios from "axios";
 
 const useArticles = () => {
 
-    const baseURL = `${process.env.REACT_APP_API_URL}/api/posts`;
+    const baseURL = `${process.env.REACT_APP_API_URL}/api/articles`;
 
     const isCurrent = useRef(true);
     const [articles, setArticles] = useState([]);
@@ -23,7 +23,7 @@ const useArticles = () => {
                 const { data } = await axios.get(baseURL);
                 //Preventing changing state of an unmounted component
                 if (isCurrent.current) {
-                    setArticles(data.posts);
+                    setArticles(data.articles);
                     setIsLoading(false);
                 }
             } catch (e) {

@@ -6,7 +6,7 @@
 }
 */
 
-#post-title {
+#article-title {
     font-size: 2em;
 }
 
@@ -102,7 +102,7 @@ h2 a {
     justify-content: center;
 }
 
-.post-meta-container {
+.article-meta-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -123,15 +123,15 @@ h2 a {
     margin: 0px;
 }
 
-.post-date {
+.article-date {
     font-size: 16px;
 }
 
-.post-likes {
+.article-likes {
     margin: 0 0 0 auto;
 }
 
-.post-text {
+.article-text {
     margin-block-end: 2em;
 }
 

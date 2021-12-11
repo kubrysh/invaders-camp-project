@@ -3,7 +3,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
 import { newArticleSchema } from "../utils/newArticleValidationSchema";
 
-const baseURL = `${process.env.REACT_APP_API_URL}/api/posts`;
+const baseURL = `${process.env.REACT_APP_API_URL}/api/articles`;
 
 const NewArticleForm = ({ type }:any) => {
 
@@ -39,10 +39,11 @@ const NewArticleForm = ({ type }:any) => {
     return(
         <Formik
             initialValues={{
-                authorName: "",
-                authorEmail: "",
-                postTitle: "",
-                postText: ""
+                firstName: "",
+                lastName: "",
+                email: "",
+                title: "",
+                body: ""
             }}
             validationSchema={newArticleSchema}
             onSubmit = {(values:any) => handleSubmit(values)}
@@ -50,53 +51,65 @@ const NewArticleForm = ({ type }:any) => {
             {({ errors, touched, values }) => (
                 <Form className="form-container" noValidate>
                     <label className="label-container">
-                        Name:
+                        First Name:
                         <Field
-                            name="authorName"
-                            className={`${errors.authorName && touched.authorName && "is-warning"}`}
-                            placeholder="Your Name..."
+                            name="firstName"
+                            className={`${errors.firstName && touched.firstName && "is-warning"}`}
+                            placeholder="Your First Name..."
                             maxLength={50}
                         />
-                        {errors.authorName && touched.authorName ? (
-                            <div className="error-message" >{errors.authorName}</div>
+                        {errors.firstName && touched.firstName ? (
+                            <div className="error-message" >{errors.firstName}</div>
+                        ) : null}
+                    </label>
+                    <label className="label-container">
+                        Last Name:
+                        <Field
+                            name="lastName"
+                            className={`${errors.lastName && touched.lastName && "is-warning"}`}
+                            placeholder="Your Last Name..."
+                            maxLength={50}
+                        />
+                        {errors.lastName && touched.lastName ? (
+                            <div className="error-message" >{errors.lastName}</div>
                         ) : null}
                     </label>
                     <label className="label-container">
                         E-Mail:
                         <Field
-                            name="authorEmail"
-                            className={`${errors.authorEmail && touched.authorEmail && "is-warning"}`}
+                            name="email"
+                            className={`${errors.email && touched.email && "is-warning"}`}
                             type="email"
                             placeholder="Your E-Mail..."
                             maxLength={100}
                         />
-                        {errors.authorEmail && touched.authorEmail ? (
-                            <div className="error-message" >{errors.authorEmail}</div>
+                        {errors.email && touched.email ? (
+                            <div className="error-message" >{errors.email}</div>
                         ) : null}
                     </label>
                     <label className="label-container">
                         Title:
                         <Field
-                            name="postTitle"
-                            className={`${errors.postTitle && touched.postTitle && "is-warning"}`}
+                            name="title"
+                            className={`${errors.title && touched.title && "is-warning"}`}
                             placeholder="Your Article Title..."
                             maxLength={100}
                         />
-                        {errors.postTitle && touched.postTitle ? (
-                            <div className="error-message" >{errors.postTitle}</div>
+                        {errors.title && touched.title ? (
+                            <div className="error-message" >{errors.title}</div>
                         ) : null}
                     </label>
                     <label className="label-container">
-                        Article Text: ({560 - values.postText.length} characters)
+                        Article Text: ({560 - values.body.length} characters)
                         <Field
-                            name="postText"
+                            name="body"
                             as="textarea"
-                            className={`text-container ${errors.postText && touched.postText && "is-warning"}`}
+                            className={`text-container ${errors.body && touched.body && "is-warning"}`}
                             placeholder="Your Article Text..."
                             maxLength={560}
                         />
-                        {errors.postText && touched.postText ? (
-                            <div className="error-message" >{errors.postText}</div>
+                        {errors.body && touched.body ? (
+                            <div className="error-message" >{errors.body}</div>
                         ) : null}
                     </label>
                     <button className="submit-btn" type="submit">Submit</button>
