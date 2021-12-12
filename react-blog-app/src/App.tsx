@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import "./App.css";
 
@@ -16,14 +16,17 @@ const App = () => {
     const location = useLocation<any>();
     const background = location.state && location.state.background;
 
+    const [isNewArticleSubm, setIsNewArticleSubm] = useState(false);
+    const successProps = { isSuccess: isNewArticleSubm, setIsSuccess: setIsNewArticleSubm };
+
     return (
         <div className="app">
             <Header />
 
             {/* Routing */}
             <Switch location={ background || location }>
-                <Route exact path="/" component={MainPage} />
-                <Route exact path="/articles/new" component={NewArticlePage} />
+                <Route exact path="/" children={<MainPage updateArticles={isNewArticleSubm} />} />
+                <Route exact path="/articles/new" children={<NewArticlePage { ...successProps } />} />
                 <Route exact path="/articles/:articleId" component={ArticlePage} />
                 <Route exact path="/404" component={NotFoundPage} />
                 <Redirect from="*" to="/404"/>
@@ -32,7 +35,7 @@ const App = () => {
             {background && background.pathname !== "/articles/new" && 
                 <Route exact path="/articles/new" children={
                     <Modal>
-                        <NewArticleModal />
+                        <NewArticleModal { ...successProps } />
                     </Modal>
                 } />
             }

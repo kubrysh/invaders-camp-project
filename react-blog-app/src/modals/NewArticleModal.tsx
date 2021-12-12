@@ -1,12 +1,10 @@
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import NewArticleForm from "../components/NewArticleForm";
 import FormSuccessModal from "./FormSuccessModal";
 
-const NewArticleModal = () => {
+const NewArticleModal = ({ isSuccess, setIsSuccess }:any) => {
 
     const history = useHistory();
-    const [isSuccess, setIsSuccess] = useState(false);
 
     const openSuccess = () => {
         setIsSuccess(true);
@@ -14,6 +12,7 @@ const NewArticleModal = () => {
 
     const goBack = () => {
         history.goBack();
+        setIsSuccess(false);
     };
 
     const back = (e:any) => {

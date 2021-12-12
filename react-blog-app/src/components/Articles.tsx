@@ -27,9 +27,9 @@ const RenderArticle = (props: any) => {
     )
 }
 
-const Articles = (props:any) => {
+const Articles = ({ updateArticles }:any) => {
 
-    const { articles, isLoading } = useArticles();
+    const { articles, isLoading } = useArticles(updateArticles);
 
     if (isLoading) {
         return <p>Loading...</p>

@@ -1,14 +1,12 @@
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import NewArticleForm from "../components/NewArticleForm";
 import Sidebar from "../components/Sidebar";
 import Modal from "../components/Modal";
 import FormSuccessModal from "../modals/FormSuccessModal";
 
-const NewArticlePage = (props:any) => {
+const NewArticlePage = ({ isSuccess, setIsSuccess }:any) => {
 
     const history = useHistory();
-    const [isSuccess, setIsSuccess] = useState(false);
 
     const openSuccess = () => {
         setIsSuccess(true);
@@ -16,6 +14,7 @@ const NewArticlePage = (props:any) => {
 
     const goHome = () => {
         history.push("/");
+        setIsSuccess(false);
     };
 
     const RenderSuccess = () => {
