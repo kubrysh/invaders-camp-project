@@ -18,10 +18,10 @@ const RenderArticle = (props: any) => {
             </div>
             <div>
                 <h2>
-                    <Link to={`/article_${props.articleId}`}>{props.title}</Link>
+                    <Link to={`/articles/${props.articleId}`}>{props.title}</Link>
                 </h2>
                 <p className="article-text">{props.body}</p>
-                <Link to={`/article_${props.articleId}`} id="read-more-lnk">Read more...</Link>
+                <Link to={`/articles/${props.articleId}`} id="read-more-lnk">Read more...</Link>
             </div>
         </article>
     )

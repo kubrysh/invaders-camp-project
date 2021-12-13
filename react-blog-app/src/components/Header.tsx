@@ -16,7 +16,7 @@ const Header = (props:any) => {
             <nav>
                 <Link to="/" className="nav-element">Home</Link>
                 <Link to={{
-                    pathname: "/newarticle",
+                    pathname: "/articles/new",
                     state: { background: location }
                 }}
                     className="nav-element"

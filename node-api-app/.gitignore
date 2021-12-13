@@ -11,5 +11,3 @@
 .env.production.local
 
 npm-debug.log*
-
-articles.db-initial.json

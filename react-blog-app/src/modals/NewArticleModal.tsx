@@ -1,13 +1,28 @@
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import NewArticleForm from "../components/NewArticleForm";
+import FormSuccessModal from "./FormSuccessModal";
 
-const NewArticleModal = (props:any) => {
+const NewArticleModal = () => {
 
     const history = useHistory();
+    const [isSuccess, setIsSuccess] = useState(false);
+
+    const openSuccess = () => {
+        setIsSuccess(true);
+    };
+
+    const goBack = () => {
+        history.goBack();
+    };
 
     const back = (e:any) => {
         e.stopPropagation();
-        history.goBack();
+        goBack();
+    };
+
+    if (isSuccess) {
+        return <FormSuccessModal close={goBack}/>;
     };
 
     return (
@@ -16,7 +31,7 @@ const NewArticleModal = (props:any) => {
                 <h3>Add a New Article</h3>
                 <button onClick={back} className="close-btn">❌</button>
             </header>
-            <NewArticleForm type="modal"/>
+            <NewArticleForm openSuccess={openSuccess} onError={goBack} />
         </div>
     )
 }

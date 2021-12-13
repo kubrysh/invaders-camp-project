@@ -10,7 +10,6 @@ import ArticlePage from "./pages/ArticlePage";
 import NewArticlePage from "./pages/NewArticlePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import NewArticleModal from "./modals/NewArticleModal";
-import FormSuccessModal from "./modals/FormSuccessModal";
 
 const App = () => {
 
@@ -24,25 +23,19 @@ const App = () => {
             {/* Routing */}
             <Switch location={ background || location }>
                 <Route exact path="/" component={MainPage} />
-                <Route exact path="/newarticle" component={NewArticlePage} />
-                <Route path="/article_:articleId" component={ArticlePage} />
-                <Route path="/404" component={NotFoundPage} />
-                <Route path="*">
-                    <Redirect to="/404"/>
-                </Route>
+                <Route exact path="/articles/new" component={NewArticlePage} />
+                <Route exact path="/articles/:articleId" component={ArticlePage} />
+                <Route exact path="/404" component={NotFoundPage} />
+                <Redirect from="*" to="/404"/>
             </Switch>
 
-            {background && background.pathname !== "/newarticle/success" && <Route exact path="/newarticle/success" children={
-                <Modal>
-                    <FormSuccessModal />
-                </Modal>
-            } />}
-
-            {background && background.pathname !== "/newarticle" && <Route exact path="/newarticle" children={
-                <Modal>
-                    <NewArticleModal />
-                </Modal>
-            } />}
+            {background && background.pathname !== "/articles/new" && 
+                <Route exact path="/articles/new" children={
+                    <Modal>
+                        <NewArticleModal />
+                    </Modal>
+                } />
+            }
 
             <Footer />
         </div>
