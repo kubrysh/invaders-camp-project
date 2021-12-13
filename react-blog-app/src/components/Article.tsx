@@ -1,4 +1,10 @@
 import { useHistory } from "react-router";
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import Skeleton from "@mui/material/Skeleton"
 import useArticle from "../hooks/useArticle";
 import dateStringifier from "../utils/dateStringifier";
 
@@ -11,28 +17,49 @@ const Article = ({ id }:any) => {
         history.replace("/404");
         return null;
     }
-
-    if (isLoading) {
-        return <p>Loading...</p>;
-    }
     
     return (
-        <section className="main-column">
-            <h1 id="article-title">{article.title}</h1>
+        <Container maxWidth="md" component="section">
+            <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: "bolder" }}>
+                {isLoading ? <Skeleton /> : article.title}
+            </Typography>
             <div className="article-meta-container">
-                <img src={article.authorPhoto} alt={`${article.author}'s avatar`} className="author-avatar" />
+                {
+                    isLoading ?
+                        <Skeleton variant="circular" width={50} height={50} />
+                    :
+                        <Avatar
+                            alt={`${article.author}'s avatar`}
+                            src={article.authorPhoto}
+                            sx={{ width: 50, height: 50 }}
+                        />
+                }
                 <div className="author-date-container">
-                    <h3 id="author-name">{article.author}</h3>
-                    <span className="article-date">{dateStringifier(article.date)}</span>
+                    <Typography variant="h5" component="h3" sx={{ fontWeight: "bolder" }}>
+                        {isLoading ? <Skeleton width={170} /> : article.author}
+                    </Typography>
+                    <Typography variant="subtitle1" component="span">
+                        {isLoading ? <Skeleton width={170} /> : dateStringifier(article.date)}
+                    </Typography>
                 </div>
                 <div className="article-likes">
-                    <button>❤️ {article.likes}</button>
+                    {
+                        isLoading ||
+                        <Button
+                            variant="contained"
+                            startIcon={<FavoriteIcon />}
+                        >
+                            {article.likes}
+                        </Button>
+                    }
                 </div>
             </div>
             <div>
-                <p className="article-text">{article.body}</p>
+                <Typography variant="body1" mt={"1rem"} mb={"2rem"}>
+                    {isLoading ? <Skeleton variant="rectangular" height={200} /> : article.body}
+                </Typography>
             </div>
-        </section>
+        </Container>
     )
 }
 
