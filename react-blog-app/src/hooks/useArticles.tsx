@@ -10,6 +10,7 @@ const useArticles = () => {
         { articleId: 2 }
     ]);
     const [isDataLoading, setIsDataLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const isLoading = useSkeletonTimer(isDataLoading);
 
@@ -21,6 +22,7 @@ const useArticles = () => {
                 setArticles(data.articles);
                 setIsDataLoading(false);
             } catch (e: any) {
+                setError(e);
                 setIsDataLoading(false);
                 console.error(e);
             }
@@ -29,7 +31,7 @@ const useArticles = () => {
         fetchArticles();
     }, [baseURL]);
 
-    return { articles, isLoading };
+    return { articles, isLoading, error };
 };
 
 export default useArticles;

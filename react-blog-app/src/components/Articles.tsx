@@ -9,6 +9,7 @@ import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
 import Skeleton from "@mui/material/Skeleton";
 import React from "react";
+import Box from "@mui/material/Box";
 
 const RenderArticle = (props: any) => {
     return (
@@ -23,7 +24,9 @@ const RenderArticle = (props: any) => {
                         sx={{ width: 50, height: 50 }}
                     />
                 )}
-                <div className="author-date-container">
+                <Box ml={"10px"}>
+                    {" "}
+                    {/* Author - Date Container */}
                     <Typography
                         variant="h5"
                         component="h3"
@@ -42,7 +45,7 @@ const RenderArticle = (props: any) => {
                             dateStringifier(props.date)
                         )}
                     </Typography>
-                </div>
+                </Box>
                 <div className="article-likes">
                     {props.isLoading || (
                         <Button
@@ -86,7 +89,11 @@ const RenderArticle = (props: any) => {
                         to={`/articles/${props.articleId}`}
                         color="inherit"
                         underline="hover"
-                        id="read-more-lnk"
+                        sx={{
+                            display: "inline-block",
+                            mb: "2em",
+                            fontWeight: 500
+                        }}
                     >
                         Read more...
                     </Link>
@@ -103,7 +110,7 @@ const Articles = (props: any) => {
         <>
             {articles.map((article: any) => (
                 <React.Fragment key={article.articleId}>
-                    <Divider light sx={{ mb: "20px", border: 0.5 }} />
+                    <Divider sx={{ mb: "20px" }} />
                     <RenderArticle {...article} isLoading={isLoading} />
                 </React.Fragment>
             ))}

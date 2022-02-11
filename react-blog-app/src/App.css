@@ -6,15 +6,6 @@
 }
 */
 
-#article-title {
-    font-size: 2em;
-}
-
-h2 a {
-    color: black;
-    text-decoration: none;
-}
-
 .header-container {
     height: 56px;
     padding: 0 20px;
@@ -102,31 +93,12 @@ h2 a {
     justify-content: space-between;
 }
 
-.author-date-container {
-    margin-left: 10px;
-}
-
-#author-name {
-    margin: 0px;
-}
-
-.article-date {
-    font-size: 16px;
-}
-
 .article-likes {
     margin: 0 0 0 auto;
 }
 
 .article-text {
     margin-block-end: 2em;
-}
-
-#read-more-lnk {
-    display: inline-block;
-    margin-top: 0;
-    margin-bottom: 2em;
-    font-weight: 500;
 }
 
 .sidebar-container {
