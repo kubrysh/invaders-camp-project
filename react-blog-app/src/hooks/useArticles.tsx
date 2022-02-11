@@ -1,19 +1,14 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const useArticles = () => {
-
     const baseURL = `${process.env.REACT_APP_API_URL}/api/articles`;
 
-    const isCurrent = useRef(true);
-    const [articles, setArticles] = useState([]);
+    const [articles, setArticles] = useState([
+        { articleId: 1 },
+        { articleId: 2 }
+    ]);
     const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        return () => {
-            isCurrent.current = false;
-        };
-    }, []);
 
     useEffect(() => {
         const fetchArticles = async () => {
@@ -21,11 +16,8 @@ const useArticles = () => {
 
             try {
                 const { data } = await axios.get(baseURL);
-                //Preventing changing state of an unmounted component
-                if (isCurrent.current) {
-                    setArticles(data.articles);
-                    setIsLoading(false);
-                }
+                setArticles(data.articles);
+                setIsLoading(false);
             } catch (e) {
                 console.error(e);
             }
@@ -35,6 +27,6 @@ const useArticles = () => {
     }, [baseURL]);
 
     return { articles, isLoading };
-}
+};
 
 export default useArticles;
