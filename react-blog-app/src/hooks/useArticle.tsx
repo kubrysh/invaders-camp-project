@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import useSkeletonTimer from "./useSkeletonTimer";
 
 const useArticle = (id: any) => {
     const baseURL = `${process.env.REACT_APP_API_URL}/api/articles/${id}`;
 
     const [article, setArticle]: any = useState({});
-    const [isLoading, setIsLoading] = useState(true);
+    const [isDataLoading, setIsDataLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const isLoading = useSkeletonTimer(isDataLoading);
 
     useEffect(() => {
         const prevTitle = document.title;
@@ -22,10 +25,10 @@ const useArticle = (id: any) => {
             try {
                 const { data } = await axios.get(baseURL);
                 setArticle(data);
-                setIsLoading(false);
+                setIsDataLoading(false);
             } catch (e: any) {
                 setError(e);
-                setIsLoading(false);
+                setIsDataLoading(false);
                 console.error(e);
             }
         };
